@@ -1,15 +1,14 @@
-package com.students.crud.dto;
+package com.students.crud.DAO;
 
 import jakarta.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "students")
 public class Student {
 
     @Id
-    @Column(nullable = false, unique = true)
+    @Column(name = "registration_no")
     private String registrationNo;
 
     @Column(nullable = false)
@@ -34,8 +33,6 @@ public class Student {
     @Column(nullable = false)
     private String motherContactNo;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AcademicData> academicData;
 
     // Getters and setters
     public String getRegistrationNo() {
@@ -100,13 +97,5 @@ public class Student {
 
     public void setMotherContactNo(String motherContactNo) {
         this.motherContactNo = motherContactNo;
-    }
-
-    public List<AcademicData> getAcademicData() {
-        return academicData;
-    }
-
-    public void setAcademicData(List<AcademicData> academicData) {
-        this.academicData = academicData;
     }
 }
