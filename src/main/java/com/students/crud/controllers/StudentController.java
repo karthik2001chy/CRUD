@@ -9,6 +9,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
@@ -34,6 +36,23 @@ public class StudentController {
         Page<StudentSimpleDto> page = studentService.getStudentsSimple(pageable);
 
         return ResponseEntity.ok(page);
+    }
+
+    // Slice backed by cached list to avoid serializing PageImpl
+    @GetMapping("/dto/slice")
+    public ResponseEntity<org.springframework.data.domain.Slice<StudentSimpleDto>> listStudentsDtoSlice(
+            @PageableDefault(size = 20, sort = "registrationNo") Pageable pageable) {
+
+        org.springframework.data.domain.Slice<StudentSimpleDto> slice = studentService.getStudentsSimpleSlice(pageable);
+
+        return ResponseEntity.ok(slice);
+    }
+
+    // Simple non-paginated endpoint returning only the 4-field DTOs
+    @GetMapping("/simple")
+    public ResponseEntity<List<StudentSimpleDto>> getAllSimple() {
+        List<StudentSimpleDto> list = studentService.getAllSimple();
+        return ResponseEntity.ok(list);
     }
 
 }
