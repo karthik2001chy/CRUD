@@ -7,6 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +25,7 @@ public class StudentController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('SENIOR')")
     public ResponseEntity<Page<Student>> listStudents(
             @PageableDefault(size = 20, sort = "registrationNo") Pageable pageable) {
         Page<Student> page = studentService.getStudents(pageable);
@@ -30,6 +34,7 @@ public class StudentController {
 
     // Return a Page of DTOs so clients get pagination metadata as well
     @GetMapping("/dto")
+    @PreAuthorize("hasRole('SENIOR')")
     public ResponseEntity<Page<StudentSimpleDto>> listStudentsDto(
             @PageableDefault(size = 20, sort = "registrationNo") Pageable pageable) {
 
@@ -40,6 +45,7 @@ public class StudentController {
 
     // Slice backed by cached list to avoid serializing PageImpl
     @GetMapping("/dto/slice")
+    @PreAuthorize("hasRole('SENIOR')")
     public ResponseEntity<org.springframework.data.domain.Slice<StudentSimpleDto>> listStudentsDtoSlice(
             @PageableDefault(size = 20, sort = "registrationNo") Pageable pageable) {
 
@@ -48,9 +54,17 @@ public class StudentController {
         return ResponseEntity.ok(slice);
     }
 
-    // Simple non-paginated endpoint returning only the 4-field DTOs
     @GetMapping("/simple")
+    @PreAuthorize("hasRole('JUNIOR')")
     public ResponseEntity<List<StudentSimpleDto>> getAllSimple() {
+        // Extra check: If somehow a SENIOR user gets here, explicitly deny
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals("ROLE_SENIOR"))) {
+            throw new org.springframework.security.access.AccessDeniedException(
+                    "You don't have access to view this resource. This endpoint is restricted to JUNIOR users only.");
+        }
+
         List<StudentSimpleDto> list = studentService.getAllSimple();
         return ResponseEntity.ok(list);
     }
