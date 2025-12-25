@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -35,6 +36,25 @@ public class StudentService {
         return studentRepository.findAll(pageable);
     }
 
+    public Optional<Student> getStudentByRegistrationNo(String registrationNo) {
+        return studentRepository.findById(registrationNo);
+    }
+
+    // Search students by name
+    public List<Student> searchStudentsByName(String name) {
+        List<Student> allStudents = studentRepository.findAll();
+        return allStudents.stream()
+                .filter(student -> student.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    // Search students by name and return DTO
+    public List<StudentSimpleDto> searchStudentsByNameSimple(String name) {
+        return searchStudentsByName(name).stream()
+                .map(studentMapper::toSimpleDto)
+                .collect(Collectors.toList());
+    }
+
     // Return a Page of DTOs; cache per page/size/sort
     @Cacheable(value = "studentSimple", key = "#pageable.pageNumber + '-' + #pageable.pageSize + '-' + #pageable.sort.toString()")
     public Page<StudentSimpleDto> getStudentsSimple(Pageable pageable) {
@@ -55,3 +75,5 @@ public class StudentService {
         return studentRepository.findById(registrationNo).map(studentMapper::toSimpleDto);
     }
 }
+
+

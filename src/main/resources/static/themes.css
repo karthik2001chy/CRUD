@@ -1,0 +1,512 @@
+/*
+   Student Management System - Additional Theme Styles
+   Copy and paste these into index.html <style> section to customize
+   or link as external CSS file
+*/
+
+/* ========================================
+   DARK THEME (Optional)
+   ======================================== */
+body.dark-theme {
+    background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+}
+
+body.dark-theme .content,
+body.dark-theme header {
+    background: rgba(30, 30, 46, 0.95);
+    color: #e0e0e0;
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+    background: #2d2d44;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-theme table {
+    background: #1e1e2e;
+}
+
+body.dark-theme th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.dark-theme td {
+    border-bottom-color: #444;
+}
+
+/* ========================================
+   BLUE THEME (Optional)
+   ======================================== */
+body.blue-theme {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+
+body.blue-theme .nav-btn {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+body.blue-theme .nav-btn:hover,
+body.blue-theme .nav-btn.active {
+    background: #3b82f6;
+}
+
+body.blue-theme .btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+}
+
+/* ========================================
+   GREEN THEME (Optional)
+   ======================================== */
+body.green-theme {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+body.green-theme .nav-btn {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+body.green-theme .nav-btn:hover,
+body.green-theme .nav-btn.active {
+    background: #10b981;
+}
+
+body.green-theme .btn-primary {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* ========================================
+   COMPACT LAYOUT (Mobile-first)
+   ======================================== */
+body.compact {
+    padding: 10px;
+}
+
+body.compact .content {
+    padding: 20px;
+}
+
+body.compact header {
+    padding: 20px;
+}
+
+body.compact header h1 {
+    font-size: 1.8em;
+}
+
+/* ========================================
+   MINIMAL THEME
+   ======================================== */
+body.minimal .student-card {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+body.minimal .btn {
+    border-radius: 0;
+}
+
+/* ========================================
+   HIGH CONTRAST (Accessibility)
+   ======================================== */
+body.high-contrast {
+    background: #ffffff;
+}
+
+body.high-contrast .content,
+body.high-contrast header {
+    background: #ffffff;
+    color: #000000;
+}
+
+body.high-contrast .nav-btn {
+    border: 3px solid #000000;
+    color: #000000;
+}
+
+body.high-contrast .nav-btn:hover,
+body.high-contrast .nav-btn.active {
+    background: #000000;
+    color: #ffffff;
+}
+
+body.high-contrast input,
+body.high-contrast select {
+    border: 2px solid #000000;
+}
+
+/* ========================================
+   ANIMATIONS DISABLED (Reduced Motion)
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+    .navbar,
+    .btn,
+    .modal,
+    .alert {
+        display: none !important;
+    }
+
+    .student-card,
+    table {
+        page-break-inside: avoid;
+    }
+
+    body {
+        background: white;
+    }
+
+    .content {
+        box-shadow: none;
+        padding: 0;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Text Colors */
+.text-primary {
+    color: #667eea;
+}
+
+.text-success {
+    color: #10b981;
+}
+
+.text-error {
+    color: #ff6b6b;
+}
+
+.text-warning {
+    color: #f59e0b;
+}
+
+/* Background Colors */
+.bg-primary {
+    background: #667eea;
+}
+
+.bg-light {
+    background: #f8f9fa;
+}
+
+.bg-dark {
+    background: #1e1e2e;
+}
+
+/* Spacing */
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.ml-20 { margin-left: 20px; }
+.mr-20 { margin-right: 20px; }
+
+.p-20 { padding: 20px; }
+.pt-20 { padding-top: 20px; }
+.pb-20 { padding-bottom: 20px; }
+
+/* Display */
+.d-none {
+    display: none !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.d-grid {
+    display: grid !important;
+}
+
+/* Text Alignment */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* Border Radius */
+.rounded-sm {
+    border-radius: 4px;
+}
+
+.rounded-md {
+    border-radius: 8px;
+}
+
+.rounded-lg {
+    border-radius: 12px;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+/* Box Shadow */
+.shadow-sm {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Opacity */
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.opacity-75 {
+    opacity: 0.75;
+}
+
+/* Transform */
+.scale-up:hover {
+    transform: scale(1.05);
+}
+
+.scale-down:hover {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Extra Large (1200px+) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .form-row,
+    .form-row-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .student-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Large (992px+) */
+@media (min-width: 992px) {
+    .student-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Medium (768px+) */
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .student-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small (576px+) */
+@media (min-width: 576px) {
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+/* ========================================
+   LOADING & SKELETON STATES
+   ======================================== */
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ========================================
+   TOOLTIP STYLES
+   ======================================== */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.85em;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* ========================================
+   CARD VARIATIONS
+   ======================================== */
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-flat {
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+}
+
+.card-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+/* ========================================
+   FORM VARIATIONS
+   ======================================== */
+
+.form-inline {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.form-inline .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group.has-error input {
+    border-color: #ff6b6b;
+}
+
+.form-group.has-success input {
+    border-color: #10b981;
+}
+
+/* ========================================
+   TABLE VARIATIONS
+   ======================================== */
+
+.table-striped tbody tr:nth-child(odd) {
+    background: #f8f9fa;
+}
+
+.table-bordered {
+    border: 1px solid #e0e0e0;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #e0e0e0;
+}
+
+/* ========================================
+   BADGE VARIATIONS
+   ======================================== */
+
+.badge-success {
+    background: #10b981;
+}
+
+.badge-error {
+    background: #ff6b6b;
+}
+
+.badge-warning {
+    background: #f59e0b;
+}
+
+.badge-info {
+    background: #3b82f6;
+}
+
+/* ========================================
+   TRANSITIONS & EFFECTS
+   ======================================== */
+
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+.transition-colors {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.fade {
+    opacity: 0.5;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
